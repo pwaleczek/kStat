@@ -10,7 +10,6 @@
 		E563F16517E4EF7F0067785E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E563F16417E4EF7F0067785E /* Cocoa.framework */; };
 		E563F16F17E4EF7F0067785E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E563F16D17E4EF7F0067785E /* InfoPlist.strings */; };
 		E563F17117E4EF7F0067785E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E563F17017E4EF7F0067785E /* main.m */; };
-		E563F17517E4EF7F0067785E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E563F17317E4EF7F0067785E /* Credits.rtf */; };
 		E563F17817E4EF7F0067785E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E563F17717E4EF7F0067785E /* AppDelegate.m */; };
 		E563F17B17E4EF7F0067785E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E563F17917E4EF7F0067785E /* MainMenu.xib */; };
 /* End PBXBuildFile section */
@@ -25,7 +24,6 @@
 		E563F16E17E4EF7F0067785E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E563F17017E4EF7F0067785E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E563F17217E4EF7F0067785E /* kStat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kStat-Prefix.pch"; sourceTree = "<group>"; };
-		E563F17417E4EF7F0067785E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		E563F17617E4EF7F0067785E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E563F17717E4EF7F0067785E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E563F17A17E4EF7F0067785E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				E563F16D17E4EF7F0067785E /* InfoPlist.strings */,
 				E563F17017E4EF7F0067785E /* main.m */,
 				E563F17217E4EF7F0067785E /* kStat-Prefix.pch */,
-				E563F17317E4EF7F0067785E /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -154,7 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E563F16F17E4EF7F0067785E /* InfoPlist.strings in Resources */,
-				E563F17517E4EF7F0067785E /* Credits.rtf in Resources */,
 				E563F17B17E4EF7F0067785E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,14 +176,6 @@
 				E563F16E17E4EF7F0067785E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E563F17317E4EF7F0067785E /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E563F17417E4EF7F0067785E /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		E563F17917E4EF7F0067785E /* MainMenu.xib */ = {
@@ -267,6 +255,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kStat/kStat-Prefix.pch";
 				INFOPLIST_FILE = "kStat/kStat-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -279,6 +268,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kStat/kStat-Prefix.pch";
 				INFOPLIST_FILE = "kStat/kStat-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
