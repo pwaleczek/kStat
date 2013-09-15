@@ -22,4 +22,5 @@
 @property (strong, nonatomic) NSStatusItem *statusBar;
 
 @property (strong) IBOutlet NSMenuItem *statInMenu;
+@property (strong) IBOutlet NSMenuItem *statInMenuSession;
 @end
