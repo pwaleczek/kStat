@@ -8,7 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+}
+
+@property (assign) NSInteger keysPressed;
+
+@property (strong) IBOutlet NSTextField *keystrokeCounter;
 
 @property (assign) IBOutlet NSView *statView;
 
@@ -16,4 +21,5 @@
 
 @property (strong, nonatomic) NSStatusItem *statusBar;
 
+@property (strong) IBOutlet NSMenuItem *statInMenu;
 @end

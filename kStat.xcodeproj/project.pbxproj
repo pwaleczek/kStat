@@ -12,6 +12,7 @@
 		E563F17117E4EF7F0067785E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E563F17017E4EF7F0067785E /* main.m */; };
 		E563F17817E4EF7F0067785E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E563F17717E4EF7F0067785E /* AppDelegate.m */; };
 		E563F17B17E4EF7F0067785E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E563F17917E4EF7F0067785E /* MainMenu.xib */; };
+		E563F18217E51D430067785E /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E563F18117E51D430067785E /* Defaults.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		E563F17617E4EF7F0067785E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E563F17717E4EF7F0067785E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E563F17A17E4EF7F0067785E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E563F18117E51D430067785E /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				E563F16D17E4EF7F0067785E /* InfoPlist.strings */,
 				E563F17017E4EF7F0067785E /* main.m */,
 				E563F17217E4EF7F0067785E /* kStat-Prefix.pch */,
+				E563F18117E51D430067785E /* Defaults.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			files = (
 				E563F16F17E4EF7F0067785E /* InfoPlist.strings in Resources */,
 				E563F17B17E4EF7F0067785E /* MainMenu.xib in Resources */,
+				E563F18217E51D430067785E /* Defaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

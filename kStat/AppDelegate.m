@@ -11,23 +11,79 @@
 @implementation AppDelegate
 
 @synthesize statusBar = _statusBar;
+@synthesize statInMenu = _statInMenu;
+@synthesize keysPressed = _keysPressed;
+@synthesize keystrokeCounter = _keystrokeCounter;
+
+NSUserDefaults *preferences;
 
 - (void) awakeFromNib {
+    preferences = [NSUserDefaults standardUserDefaults];
+    
+    self.keysPressed = [[preferences objectForKey:@"keysPressed"] intValue];
+    
+    NSString *file = [[NSBundle mainBundle]
+                      pathForResource:@"Defaults" ofType:@"plist"];
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:file];
+    [preferences registerDefaults:dict];
+    
+    NSLog(@"Loading prefs. %ld, %d", self.keysPressed, [[preferences objectForKey:@"keysPressed"] intValue]);
+
+    
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
-    self.statusBar.title = @"G";
+    NSFont *font = [NSFont fontWithName:@"Times-BoldItalic" size:14.5];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:@"∑" attributes:attrsDictionary];
+
     
-    // you can also set an image
-    //self.statusBar.image =
+    [self.statusBar setAttributedTitle:attrString];
     
-    self.statusBar.menu = self.statMenu;
-    self.statusBar.highlightMode = YES;
+    self.keysPressed = [[preferences objectForKey:@"keysPressed"] intValue];
+    
+    [self.statInMenu setTitle:[NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
+    [self.keystrokeCounter setStringValue: [NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
+    [self.statusBar setMenu:self.statMenu];
+    [self.statusBar setHighlightMode:YES];
 }
 
+- (NSString *) setFormat:(NSInteger)value {
+    NSNumberFormatter *numberFormat = [[NSNumberFormatter alloc] init];
+    numberFormat.usesGroupingSeparator = YES;
+    numberFormat.groupingSeparator = @" ";
+    numberFormat.groupingSize = 3;
+    
+    NSString *result = [numberFormat stringFromNumber:[NSNumber numberWithInteger:value]];
+    return result;
+}
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void) updateKeyPresses {
+    self.keysPressed++;
+    [preferences setInteger:self.keysPressed forKey:@"keysPressed"];
+    [self.keystrokeCounter setStringValue: [NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
+    [self.statInMenu setTitle:[NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
+}
+
+-(void) savePrefs:(NSTimer *)timer {
+    [preferences synchronize];
+    NSLog(@"Saving prefs.");
+}
+
+- (void) applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    [NSTimer scheduledTimerWithTimeInterval: 60.0
+                                     target: self
+                                   selector: @selector(savePrefs:)
+                                   userInfo: nil
+                                    repeats: YES];
+    
+    [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask + NSAlternateKeyMask + NSShiftKeyMask + NSFunctionKeyMask + NSCommandKeyMask) handler:^(NSEvent *event){
+        
+        [self updateKeyPresses];
+        
+        NSLog(@"%@ pressed!", event.characters);
+    }];
 }
 
 @end
