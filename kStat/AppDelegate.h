@@ -11,6 +11,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
 }
 
+@property (assign) NSInteger keysPressedSession;
 @property (assign) NSInteger keysPressed;
 
 @property (strong) IBOutlet NSTextField *keystrokeCounter;

@@ -13,11 +13,17 @@
 @synthesize statusBar = _statusBar;
 @synthesize statInMenu = _statInMenu;
 @synthesize keysPressed = _keysPressed;
+@synthesize keysPressedSession = _keysPressedSession;
 @synthesize keystrokeCounter = _keystrokeCounter;
+
 
 NSUserDefaults *preferences;
 
+
 - (void) awakeFromNib {
+    
+    self.keysPressedSession = 0;
+    
     preferences = [NSUserDefaults standardUserDefaults];
     
     self.keysPressed = [[preferences objectForKey:@"keysPressed"] intValue];
@@ -42,7 +48,10 @@ NSUserDefaults *preferences;
     
     self.keysPressed = [[preferences objectForKey:@"keysPressed"] intValue];
     
-    [self.statInMenu setTitle:[NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
+    [self.statInMenu setTitle:[NSString stringWithFormat:@"Total: %@", [self setFormat: self.keysPressed]]];
+    
+    [self.statInMenuSession setTitle:[NSString stringWithFormat:@"This session: %@", [self setFormat: self.keysPressedSession]]];
+    
     [self.keystrokeCounter setStringValue: [NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
     [self.statusBar setMenu:self.statMenu];
     [self.statusBar setHighlightMode:YES];
@@ -60,9 +69,15 @@ NSUserDefaults *preferences;
 
 - (void) updateKeyPresses {
     self.keysPressed++;
+    self.keysPressedSession++;
     [preferences setInteger:self.keysPressed forKey:@"keysPressed"];
+    
     [self.keystrokeCounter setStringValue: [NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
+    
     [self.statInMenu setTitle:[NSString stringWithFormat:@"Keys pressed: %@", [self setFormat: self.keysPressed]]];
+    
+    [self.statInMenuSession setTitle:[NSString stringWithFormat:@"This session: %@", [self setFormat: self.keysPressedSession]]];
+    
 }
 
 -(void) savePrefs:(NSTimer *)timer {
